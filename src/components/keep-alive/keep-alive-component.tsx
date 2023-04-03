@@ -38,15 +38,21 @@ export const KeepAlive: FC<KeepAliveComponentProps> = (props) => {
     }}>
       {props.children}
       {Object.values(aliveComponentsState).map(values => (
-        <div ref={(node) => {
-          if (node && !values.nodes) {
-            setAliveComponentState({
-              ...values,
-              nodes: [...node.childNodes],
-              state: AliveComponentsStateState.CREATED
-            })
-          }
-        }} className={values.id}>{values.reactElement}</div>
+        <div
+          key={values.id}
+          ref={(node) => {
+            // 只进行渲染一次
+            if (node && !values.nodes) {
+              setAliveComponentState({
+                ...values,
+                nodes: [...node.childNodes],
+                state: AliveComponentsStateState.CREATED
+              })
+            }
+          }}
+        >
+          {values.reactElement}
+        </div>
       ))}
     </KeepAliveContext.Provider>
   )
