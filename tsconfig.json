@@ -3,7 +3,7 @@
     "target": "ES6",
     "esModuleInterop": true,
     "module": "commonjs",
-    "lib": ["DOM", "ESNext"],
+    "lib": ["DOM", "ESNext", "DOM.Iterable", "ES2015.Iterable"],
     "rootDir": ".",
     "baseUrl": ".",
     "jsx": "react-jsx"

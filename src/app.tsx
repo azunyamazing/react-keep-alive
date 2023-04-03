@@ -1,7 +1,10 @@
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom"
+import { keepAlive, KeepAlive } from './components/keep-alive';
+import { About } from "./pages/about";
+import { Home } from "./pages/home";
 
-const AliveHome = () => <span>home</span>;
-const AliveAbout = () => <span>about</span>;
+const AliveHome = keepAlive(Home, 'home');
+const AliveAbout = keepAlive(About, 'about');
 
 export const App = () => {
   return (
@@ -12,10 +15,12 @@ export const App = () => {
           <li><Link to="/about">About</Link></li>
         </ul>
 
-        <Routes>
-          <Route path={'/'} Component={AliveHome} />
-          <Route path={'/about'} Component={AliveAbout} />
-        </Routes>
+        <KeepAlive>
+          <Routes>
+            <Route path={'/'} Component={AliveHome} />
+            <Route path={'/about'} Component={AliveAbout} />
+          </Routes>
+        </KeepAlive>
       </BrowserRouter>
     </div>
   )
