@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useCallback, useState } from "react";
-import { AliveComponentsStateState } from "./types";
+import { AliveComponentsStatus } from "./types";
 import type { FC, ReactElement } from "react";
 
 export interface KeepAliveComponentProps {
@@ -10,7 +10,7 @@ export interface AliveComponentValues {
   id: string;
   nodes: Node[] | null; // 真实 dom
   reactElement: ReactNode;
-  state: AliveComponentsStateState;
+  state: AliveComponentsStatus;
 }
 export type AliveComponentsState = Record<string, AliveComponentValues>;
 
@@ -46,7 +46,7 @@ export const KeepAlive: FC<KeepAliveComponentProps> = (props) => {
               setAliveComponentState({
                 ...values,
                 nodes: [...node.childNodes],
-                state: AliveComponentsStateState.CREATED
+                state: AliveComponentsStatus.CREATED
               })
             }
           }}

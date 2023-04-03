@@ -1,6 +1,6 @@
 import { useRef, useContext, useEffect } from 'react';
 import { KeepAliveContext } from './keep-alive-component';
-import { AliveComponentsStateState } from './types';
+import { AliveComponentsStatus } from './types';
 import type { FC } from "react"
 
 export type KeepAliveTransfrom = (Component: FC, componentId: string) => FC;
@@ -18,7 +18,7 @@ export const keepAlive: KeepAliveTransfrom = (Component, id) => {
           id,
           reactElement: <Component {...props} />,
           nodes: null,
-          state: AliveComponentsStateState.CREATE
+          state: AliveComponentsStatus.CREATE
         });
         return;
       }
@@ -29,7 +29,6 @@ export const keepAlive: KeepAliveTransfrom = (Component, id) => {
         })
       }
     }, [componentValue, wraperRef, Component, props]);
-
 
     return <div ref={wraperRef}></div>;
   }
