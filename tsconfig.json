@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "lib": ["DOM", "ESNext"],
+    "rootDir": ".",
+    "baseUrl": ".",
+    "jsx": "react-jsx"
+  },
+  "exclude": ["node_modules"]
+}
